@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image to Coloring Page - Free Online Coloring Page Generator</title>
+  <meta name="description" content="Convert any image, photo, or picture into a printable coloring page online for free. Upload JPG, PNG, or WEBP and download a clean black and white coloring page." />
+  <meta name="keywords" content="image to coloring page, photo to coloring page, picture to coloring page, coloring page generator, convert image to coloring page" />
+  <link rel="canonical" href="https://imagetocoloringpage.com/" />
+  <meta property="og:title" content="Image to Coloring Page" />
+  <meta property="og:description" content="Turn photos and pictures into printable coloring pages online." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://imagetocoloringpage.com/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image to Coloring Page",
+    "url": "https://imagetocoloringpage.com/",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web Browser",
+    "description": "A free online tool that converts images, photos, and pictures into printable coloring pages.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #fbf7ff;
+      --card: #ffffff;
+      --ink: #191428;
+      --muted: #6f6680;
+      --primary: #7c3aed;
+      --primary-dark: #5b21b6;
+      --soft: #f1e9ff;
+      --line: #e7dcff;
+      --success: #15a36b;
+      --shadow: 0 18px 60px rgba(76, 29, 149, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, #efe3ff 0, transparent 30%),
+        radial-gradient(circle at 90% 10%, #fff1f8 0, transparent 26%),
+        var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(251, 247, 255, 0.82);
+      border-bottom: 1px solid rgba(231, 220, 255, 0.8);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; }
+    .logo {
+      width: 36px; height: 36px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--primary), #ff7ac8);
+      color: #fff; box-shadow: 0 10px 26px rgba(124, 58, 237, 0.25);
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero { padding: 72px 0 28px; text-align: center; }
+    .badge {
+      display: inline-flex; gap: 8px; align-items: center;
+      padding: 8px 12px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.75); border-radius: 999px;
+      color: var(--primary-dark); font-size: 14px; font-weight: 700;
+    }
+    h1 { font-size: clamp(42px, 7vw, 78px); line-height: .95; letter-spacing: -0.07em; margin: 22px 0 18px; }
+    .hero p { max-width: 760px; margin: 0 auto; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--muted); }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      border: 0; border-radius: 14px; padding: 14px 22px; cursor: pointer;
+      font-weight: 800; font-size: 15px; transition: .2s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 14px 32px rgba(124, 58, 237, .25); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-ghost { background: white; color: var(--ink); border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+    .tool-shell {
+      margin: 34px auto 70px; background: rgba(255,255,255,.86);
+      border: 1px solid rgba(231, 220, 255, .95); border-radius: 30px;
+      padding: 22px; box-shadow: var(--shadow);
+    }
+    .tool-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 22px; }
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; }
+    .panel h2 { margin: 0 0 8px; font-size: 24px; letter-spacing: -0.04em; }
+    .panel .hint { color: var(--muted); line-height: 1.55; margin: 0 0 18px; }
+    .dropzone {
+      min-height: 220px; border: 2px dashed #c7b4ff; border-radius: 22px;
+      background: linear-gradient(180deg, #fbf8ff, #fff);
+      display: grid; place-items: center; text-align: center; padding: 24px; cursor: pointer;
+      transition: .2s ease;
+    }
+    .dropzone:hover, .dropzone.dragover { border-color: var(--primary); background: var(--soft); }
+    .upload-icon { font-size: 42px; margin-bottom: 10px; }
+    .dropzone strong { display: block; font-size: 18px; margin-bottom: 6px; }
+    .dropzone span { color: var(--muted); font-size: 14px; }
+    #fileInput { display: none; }
+
+    .controls { display: grid; gap: 16px; margin-top: 20px; }
+    .control label { display: flex; justify-content: space-between; font-weight: 800; font-size: 14px; margin-bottom: 8px; }
+    .control label span { color: var(--primary); }
+    input[type="range"] { width: 100%; accent-color: var(--primary); }
+    .option-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    select {
+      width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+      background: white; color: var(--ink); font-weight: 700;
+    }
+
+    .preview-wrap { display: grid; gap: 16px; }
+    .preview-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .status { color: var(--muted); font-size: 14px; }
+    .status.ok { color: var(--success); font-weight: 800; }
+    .canvas-card {
+      min-height: 430px; border: 1px solid var(--line); border-radius: 20px;
+      background:
+        linear-gradient(45deg, #fafafa 25%, transparent 25%),
+        linear-gradient(-45deg, #fafafa 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #fafafa 75%),
+        linear-gradient(-45deg, transparent 75%, #fafafa 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+      display: grid; place-items: center; overflow: hidden; padding: 18px;
+    }
+    canvas { max-width: 100%; max-height: 600px; background: #fff; border-radius: 12px; box-shadow: 0 10px 26px rgba(0,0,0,.08); }
+    .empty-state { text-align: center; color: var(--muted); padding: 30px; }
+    .download-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: -34px auto 64px; }
+    .trust-card { background: rgba(255,255,255,.76); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .trust-card strong { display: block; margin-bottom: 6px; }
+    .trust-card span { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    section { padding: 54px 0; }
+    .section-head { text-align: center; max-width: 760px; margin: 0 auto 30px; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.055em; margin: 0 0 12px; }
+    .section-head p { color: var(--muted); line-height: 1.65; margin: 0; }
+    .steps, .use-cases, .faq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: rgba(255,255,255,.82); border: 1px solid var(--line); border-radius: 22px; padding: 24px; box-shadow: 0 12px 36px rgba(76, 29, 149, .06); }
+    .card .num { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; background: var(--soft); color: var(--primary); font-weight: 900; margin-bottom: 14px; }
+    .card h3 { margin: 0 0 10px; font-size: 20px; letter-spacing: -0.03em; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .demo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+    .demo-box { background: white; border: 1px solid var(--line); border-radius: 22px; padding: 20px; min-height: 240px; display: grid; place-items: center; text-align: center; }
+    .demo-art { width: 180px; height: 180px; border-radius: 28px; background: linear-gradient(135deg, #ffe3f1, #dcd0ff); display: grid; place-items: center; font-size: 68px; margin-bottom: 12px; }
+    .demo-outline { width: 180px; height: 180px; border-radius: 28px; background: #fff; border: 4px solid #111; display: grid; place-items: center; font-size: 68px; filter: grayscale(1) contrast(2); margin-bottom: 12px; }
+
+    details { background: rgba(255,255,255,.82); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+    summary { cursor: pointer; font-weight: 900; }
+    details p { color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+    .faq-grid { grid-template-columns: 1fr 1fr; }
+
+    footer { padding: 34px 0 46px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; }
+
+    @media (max-width: 900px) {
+      .tool-grid, .demo { grid-template-columns: 1fr; }
+      .trust, .steps, .use-cases, .faq-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 24px, 1120px); }
+      .hero { padding-top: 46px; }
+      .tool-shell { padding: 12px; border-radius: 22px; }
+      .panel { padding: 16px; border-radius: 18px; }
+      .trust, .steps, .use-cases, .faq-grid { grid-template-columns: 1fr; }
+      .option-row { grid-template-columns: 1fr; }
+      .canvas-card { min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Image to Coloring Page home">
+        <span class="logo">✎</span>
+        <span>Image to Coloring Page</span>
+      </a>
+      <div class="nav-links">
+        <a href="#tool">Tool</a>
+        <a href="#how">How it works</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero container">
+      <div class="badge">✨ Free printable coloring page generator</div>
+      <h1>Turn Any Image Into a Coloring Page</h1>
+      <p>Upload a photo, picture, or simple illustration and convert it into a clean black-and-white outline coloring page. Works directly in your browser.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#tool">Upload Image</a>
+        <a class="btn btn-ghost" href="#how">See How It Works</a>
+      </div>
+    </header>
+
+    <div class="container tool-shell" id="tool">
+      <div class="tool-grid">
+        <div class="panel">
+          <h2>Convert your image</h2>
+          <p class="hint">Drag and drop an image below, then adjust the outline strength until it looks ready to print.</p>
+
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <div>
+              <div class="upload-icon">🖼️</div>
+              <strong>Drop image here or click to upload</strong>
+              <span>Supports JPG, PNG, WEBP. Your image stays in your browser.</span>
+            </div>
+          </label>
+          <input id="fileInput" type="file" accept="image/*" />
+
+          <div class="controls">
+            <div class="control">
+              <label for="threshold">Outline strength <span id="thresholdValue">130</span></label>
+              <input id="threshold" type="range" min="60" max="220" value="130" />
+            </div>
+            <div class="control">
+              <label for="contrast">Detail level <span id="contrastValue">1.8</span></label>
+              <input id="contrast" type="range" min="1" max="3" step="0.1" value="1.8" />
+            </div>
+            <div class="option-row">
+              <select id="paperSize" aria-label="Paper size">
+                <option value="original">Keep original ratio</option>
+                <option value="square">Square printable page</option>
+                <option value="letter">US Letter ratio</option>
+                <option value="a4">A4 ratio</option>
+              </select>
+              <button class="btn btn-primary" id="generateBtn">Generate Page</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel preview-wrap">
+          <div class="preview-head">
+            <div>
+              <h2>Preview</h2>
+              <div class="status" id="status">Upload an image to start.</div>
+            </div>
+            <div class="download-row">
+              <button class="btn btn-ghost" id="resetBtn">Reset</button>
+              <button class="btn btn-primary" id="downloadBtn">Download PNG</button>
+            </div>
+          </div>
+          <div class="canvas-card">
+            <div class="empty-state" id="emptyState">Your coloring page preview will appear here.</div>
+            <canvas id="canvas" style="display:none"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container trust">
+      <div class="trust-card"><strong>100% browser-based</strong><span>No signup. No installation. Fast online conversion.</span></div>
+      <div class="trust-card"><strong>Printable output</strong><span>Download a black and white PNG for home or classroom printing.</span></div>
+      <div class="trust-card"><strong>Adjustable outlines</strong><span>Control the strength and detail level for different photos.</span></div>
+      <div class="trust-card"><strong>SEO-focused tool</strong><span>Built for image to coloring page, photo to coloring page, and picture to coloring page searches.</span></div>
+    </div>
+
+    <section class="container" id="how">
+      <div class="section-head">
+        <h2>How to Convert an Image to a Coloring Page</h2>
+        <p>This free image to coloring page tool is designed for parents, teachers, creators, and anyone who wants to turn pictures into printable coloring sheets.</p>
+      </div>
+      <div class="steps">
+        <div class="card"><div class="num">1</div><h3>Upload a photo</h3><p>Choose a JPG, PNG, or WEBP image from your device. Clear photos with simple backgrounds work best.</p></div>
+        <div class="card"><div class="num">2</div><h3>Generate outlines</h3><p>The tool converts your picture into a black-and-white outline using browser image processing.</p></div>
+        <div class="card"><div class="num">3</div><h3>Download and print</h3><p>Save the final coloring page as a PNG file and print it for kids, classrooms, or creative projects.</p></div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-head">
+        <h2>Before and After Preview</h2>
+        <p>Turn everyday pictures into simple printable coloring pages in seconds.</p>
+      </div>
+      <div class="demo">
+        <div class="demo-box"><div class="demo-art">🐶</div><strong>Original photo or picture</strong><p class="hint">Upload animals, flowers, toys, cars, portraits, or classroom images.</p></div>
+        <div class="demo-box"><div class="demo-outline">🐶</div><strong>Printable coloring page</strong><p class="hint">Download a clean outline version ready for coloring.</p></div>
+      </div>
+    </section>
+
+    <section class="container" id="use-cases">
+      <div class="section-head">
+        <h2>Popular Uses</h2>
+        <p>Use this photo to coloring page generator for fun, education, and printable creative assets.</p>
+      </div>
+      <div class="use-cases">
+        <div class="card"><h3>For kids</h3><p>Create custom coloring pages from pets, cartoons, toys, family photos, and favorite objects.</p></div>
+        <div class="card"><h3>For teachers</h3><p>Make classroom worksheets, seasonal activities, and printable learning materials from images.</p></div>
+        <div class="card"><h3>For creators</h3><p>Generate simple line art from images for printables, crafts, notebooks, and creative projects.</p></div>
+      </div>
+    </section>
+
+    <section class="container" id="faq">
+      <div class="section-head">
+        <h2>Frequently Asked Questions</h2>
+        <p>Answers for users searching image to coloring page, photo to coloring page, and picture to coloring page tools.</p>
+      </div>
+      <div class="faq-grid">
+        <details open><summary>How do I turn an image into a coloring page?</summary><p>Upload your image, click generate, adjust the outline strength if needed, and download the black-and-white coloring page as a PNG file.</p></details>
+        <details><summary>Can I convert a photo to a coloring page?</summary><p>Yes. This tool supports photos and pictures in common image formats such as JPG, PNG, and WEBP.</p></details>
+        <details><summary>What images work best?</summary><p>Simple images with clear subjects, good lighting, and less clutter usually create cleaner coloring pages.</p></details>
+        <details><summary>Is this coloring page generator free?</summary><p>Yes. The tool is free to use and runs directly in your browser.</p></details>
+        <details><summary>Can I print the result?</summary><p>Yes. Download the PNG file, open it on your device, and print it like a normal image.</p></details>
+        <details><summary>Are my images uploaded to a server?</summary><p>No. This version processes images locally inside your browser, so your file does not need to leave your device.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 ImageToColoringPage.com · Free Image to Coloring Page Generator</div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const dropzone = document.getElementById('dropzone');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const statusEl = document.getElementById('status');
+    const emptyState = document.getElementById('emptyState');
+    const threshold = document.getElementById('threshold');
+    const contrast = document.getElementById('contrast');
+    const thresholdValue = document.getElementById('thresholdValue');
+    const contrastValue = document.getElementById('contrastValue');
+    const generateBtn = document.getElementById('generateBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const paperSize = document.getElementById('paperSize');
+    let sourceImage = null;
+    let sourceName = 'coloring-page';
+
+    function setStatus(text, ok = false) {
+      statusEl.textContent = text;
+      statusEl.className = ok ? 'status ok' : 'status';
+    }
+
+    function loadFile(file) {
+      if (!file || !file.type.startsWith('image/')) {
+        alert('Please upload a valid image file.');
+        return;
+      }
+      sourceName = file.name.replace(/\.[^/.]+$/, '') || 'coloring-page';
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        sourceImage = img;
+        URL.revokeObjectURL(url);
+        generateColoringPage();
+      };
+      img.src = url;
+    }
+
+    function getCanvasSize(img) {
+      const maxSide = 1600;
+      let w = img.width;
+      let h = img.height;
+      const ratio = paperSize.value;
+
+      if (ratio === 'square') {
+        const side = Math.min(maxSide, Math.max(w, h));
+        return { width: side, height: side, drawW: side, drawH: side, x: 0, y: 0 };
+      }
+
+      if (ratio === 'letter' || ratio === 'a4') {
+        const pageRatio = ratio === 'letter' ? 8.5 / 11 : 210 / 297;
+        let pageH = Math.min(maxSide, Math.max(w, h));
+        let pageW = Math.round(pageH * pageRatio);
+        if (pageW > maxSide) { pageW = maxSide; pageH = Math.round(pageW / pageRatio); }
+        const scale = Math.min(pageW / w, pageH / h);
+        return { width: pageW, height: pageH, drawW: Math.round(w * scale), drawH: Math.round(h * scale), x: Math.round((pageW - w * scale) / 2), y: Math.round((pageH - h * scale) / 2) };
+      }
+
+      const scale = Math.min(1, maxSide / Math.max(w, h));
+      return { width: Math.round(w * scale), height: Math.round(h * scale), drawW: Math.round(w * scale), drawH: Math.round(h * scale), x: 0, y: 0 };
+    }
+
+    function generateColoringPage() {
+      if (!sourceImage) {
+        alert('Please upload an image first.');
+        return;
+      }
+
+      const size = getCanvasSize(sourceImage);
+      canvas.width = size.width;
+      canvas.height = size.height;
+      canvas.style.display = 'block';
+      emptyState.style.display = 'none';
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(sourceImage, size.x, size.y, size.drawW, size.drawH);
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      const gray = new Uint8ClampedArray(canvas.width * canvas.height);
+      const c = parseFloat(contrast.value);
+      const t = parseInt(threshold.value, 10);
+
+      for (let i = 0, p = 0; i < data.length; i += 4, p++) {
+        const g = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+        gray[p] = Math.max(0, Math.min(255, (g - 128) * c + 128));
+      }
+
+      for (let y = 1; y < canvas.height - 1; y++) {
+        for (let x = 1; x < canvas.width - 1; x++) {
+          const p = y * canvas.width + x;
+          const gx = -gray[p - canvas.width - 1] - 2 * gray[p - 1] - gray[p + canvas.width - 1]
+                   + gray[p - canvas.width + 1] + 2 * gray[p + 1] + gray[p + canvas.width + 1];
+          const gy = -gray[p - canvas.width - 1] - 2 * gray[p - canvas.width] - gray[p - canvas.width + 1]
+                   + gray[p + canvas.width - 1] + 2 * gray[p + canvas.width] + gray[p + canvas.width + 1];
+          const mag = Math.sqrt(gx * gx + gy * gy);
+          const out = mag > t ? 0 : 255;
+          const i = p * 4;
+          data[i] = data[i + 1] = data[i + 2] = out;
+          data[i + 3] = 255;
+        }
+      }
+
+      // Clean border pixels to white
+      for (let x = 0; x < canvas.width; x++) {
+        setPixelWhite(x, 0, data); setPixelWhite(x, canvas.height - 1, data);
+      }
+      for (let y = 0; y < canvas.height; y++) {
+        setPixelWhite(0, y, data); setPixelWhite(canvas.width - 1, y, data);
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+      setStatus('Coloring page generated. Adjust sliders and generate again if needed.', true);
+    }
+
+    function setPixelWhite(x, y, data) {
+      const i = (y * canvas.width + x) * 4;
+      data[i] = data[i + 1] = data[i + 2] = 255;
+      data[i + 3] = 255;
+    }
+
+    fileInput.addEventListener('change', e => loadFile(e.target.files[0]));
+    generateBtn.addEventListener('click', generateColoringPage);
+    paperSize.addEventListener('change', () => sourceImage && generateColoringPage());
+    threshold.addEventListener('input', () => { thresholdValue.textContent = threshold.value; });
+    contrast.addEventListener('input', () => { contrastValue.textContent = contrast.value; });
+
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      loadFile(e.dataTransfer.files[0]);
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      if (!sourceImage) {
+        alert('Please generate a coloring page first.');
+        return;
+      }
+      const link = document.createElement('a');
+      link.download = `${sourceName}-coloring-page.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      sourceImage = null;
+      fileInput.value = '';
+      canvas.style.display = 'none';
+      emptyState.style.display = 'block';
+      setStatus('Upload an image to start.');
+    });
+  </script>
+</body>
+</html>
